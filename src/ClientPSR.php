@@ -12,7 +12,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use RuntimeException;
 
-class ClientImplementation implements Client
+class ClientPSR implements Client
 {
     private $apiUri;
     private $apiToken;
@@ -36,7 +36,7 @@ class ClientImplementation implements Client
         $this->streamFactory = $streamFactory;
         $this->client = $client;
 
-        $this->apiUri = $uriFactory->createUri(sprintf('%s/api/monitoring/data', $baseUri));
+        $this->apiUri = $uriFactory->createUri(sprintf('%s%s', $baseUri, self::API_URI));
     }
 
     public function push(MonitoringData $monitoringData): void

@@ -4,8 +4,10 @@
     "keywords": [
         "ph-ash",
         "phash",
+        "psr-7",
         "psr-17",
         "psr-18",
+        "guzzle",
         "client"
     ],
     "authors": [
@@ -20,7 +22,8 @@
         "php": ">=7.1.0",
         "ext-json": "*",
         "psr/http-factory": "^1.0",
-        "psr/http-client": "^1.0"
+        "psr/http-client": "^1.0",
+        "guzzlehttp/guzzle": "^6.5"
     },
     "autoload": {
         "psr-4": {

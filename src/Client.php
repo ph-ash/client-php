@@ -8,6 +8,8 @@ use Exception;
 
 interface Client
 {
+    public const API_URI = '/api/monitoring/data';
+
     /**
      * @throws Exception
      */
