@@ -5,9 +5,15 @@ declare(strict_types=1);
 namespace Phash;
 
 use DateTimeInterface;
+use RuntimeException;
 
 class MonitoringData
 {
+    public const STATUS_OK = 'ok';
+    public const STATUS_ERROR = 'error';
+
+    private const STATUSES = [self::STATUS_ERROR, self::STATUS_OK];
+
     private $id;
     private $status;
     private $payload;
@@ -27,6 +33,9 @@ class MonitoringData
         DateTimeInterface $date,
         ?string $path
     ) {
+        if (!in_array($status, self::STATUSES, true)) {
+            throw new RuntimeException(sprintf('status must be one of [%s]', implode(',', self::STATUSES)));
+        }
         $this->id = $id;
         $this->status = $status;
         $this->payload = $payload;

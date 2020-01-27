@@ -68,7 +68,7 @@ Instantiate the client class and pass the configuration as parameters:
 ```php
     $data = new Phash\MonitoringData(
         'monitoring id',
-        'ok',
+        Phash\MonitoringData::STATUS_OK,
         'this detail message will be displayed if a tile is clicked by a user',
         60,
         1,
