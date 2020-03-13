@@ -12,7 +12,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use RuntimeException;
 
-class ClientPSR implements Client
+final class ClientPSR implements Client
 {
     private $apiUri;
     private $apiToken;
