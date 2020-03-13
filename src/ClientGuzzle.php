@@ -9,7 +9,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use RuntimeException;
 
-class ClientGuzzle implements Client
+final class ClientGuzzle implements Client
 {
     private $apiToken;
     private $client;

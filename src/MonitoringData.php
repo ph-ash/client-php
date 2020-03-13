@@ -8,7 +8,7 @@ use DateTimeInterface;
 use JsonSerializable;
 use RuntimeException;
 
-class MonitoringData implements JsonSerializable
+final class MonitoringData implements JsonSerializable
 {
     public const STATUS_OK = 'ok';
     public const STATUS_ERROR = 'error';
@@ -56,52 +56,7 @@ class MonitoringData implements JsonSerializable
         $this->tileExpansionGrowthExpression = $tileExpansionGrowthExpression;
     }
 
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    public function getPayload(): string
-    {
-        return $this->payload;
-    }
-
-    public function getIdleTimeoutInSeconds(): int
-    {
-        return $this->idleTimeoutInSeconds;
-    }
-
-    public function getPriority(): int
-    {
-        return $this->priority;
-    }
-
-    public function getDate(): string
-    {
-        return $this->date;
-    }
-
-    public function getPath(): ?string
-    {
-        return $this->path;
-    }
-
-    public function getTileExpansionIntervalCount(): ?int
-    {
-        return $this->tileExpansionIntervalCount;
-    }
-
-    public function getTileExpansionGrowthExpression(): ?string
-    {
-        return $this->tileExpansionGrowthExpression;
-    }
-
-    public function jsonSerialize() {
+    public function jsonSerialize(): array {
         return get_object_vars($this);
     }
 }
