@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Phash;
 
 use DateTimeInterface;
+use JsonSerializable;
 use RuntimeException;
 
-class MonitoringData
+class MonitoringData implements JsonSerializable
 {
     public const STATUS_OK = 'ok';
     public const STATUS_ERROR = 'error';
@@ -41,7 +42,7 @@ class MonitoringData
         $this->payload = $payload;
         $this->idleTimeoutInSeconds = $idleTimeoutInSeconds;
         $this->priority = $priority;
-        $this->date = $date;
+        $this->date = $date->format('Y-m-d H:i:s');
         $this->path = $path;
     }
 
@@ -80,7 +81,7 @@ class MonitoringData
         return $this->priority;
     }
 
-    public function getDate(): DateTimeInterface
+    public function getDate(): string
     {
         return $this->date;
     }
@@ -98,5 +99,9 @@ class MonitoringData
     public function getTileExpansionGrowthExpression(): ?string
     {
         return $this->tileExpansionGrowthExpression;
+    }
+
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }
